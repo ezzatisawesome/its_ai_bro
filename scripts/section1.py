@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
 # add import and helper functions here
+import np
 
 if __name__ == "__main__":
-    # code goes here
+    np.random.seed(42)
+    A = np.random.normal(size=(4, 4))
+    B = np.random.normal(size=(4, 2))
+    print(A@B)
