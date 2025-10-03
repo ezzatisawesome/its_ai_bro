@@ -16,6 +16,8 @@ class ConstantPublisher(Node):
         self.cp_twist_pub = self.create_publisher(Twist, "/cmd_vel", 10)
         self.cp_timer = self.create_timer(0.2, self.cp_callback)
 
+        self.cp_break_sub = self.create_subscription(Bool, "/kill", self.kill_callback_sub, 10)
+
     def cp_callback(self) -> None:
         msg = String()
         msg.data = f"sending constant control {self.msg_counter}"
@@ -31,6 +33,15 @@ class ConstantPublisher(Node):
 
         # Increment
         self.msg_counter += 1
+    
+    def kill_callback_sub(self, msg: Bool) -> None:
+        if msg.data:
+            self.cp_timer.cancel()
+            msg = Twist()
+            msg.linear.x = 0.0
+            msg.angular.z = 0.0
+            self.cp_twist_pub.publish(msg)
+
 
 def main(args=None):
     rclpy.init(args=args)
