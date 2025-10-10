@@ -25,7 +25,7 @@ class ConstantPublisher(Node):
         # Twist message
         msg_twist = Twist()
         msg_twist.linear.x = 2.5
-        msg_twist.angular.z = 0.5
+        msg_twist.angular.z = 0.0
 
         # Publish
         self.cp_pub.publish(msg)
