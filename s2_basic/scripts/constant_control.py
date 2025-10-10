@@ -24,8 +24,8 @@ class ConstantPublisher(Node):
 
         # Twist message
         msg_twist = Twist()
-        msg_twist.linear.x = 2.0
-        msg_twist.angular.z = 0.2
+        msg_twist.linear.x = 2.5
+        msg_twist.angular.z = 0.5
 
         # Publish
         self.cp_pub.publish(msg)
@@ -33,7 +33,7 @@ class ConstantPublisher(Node):
 
         # Increment
         self.msg_counter += 1
-    
+
     def kill_callback_sub(self, msg: Bool) -> None:
         if msg.data:
             self.cp_timer.cancel()
