@@ -60,7 +60,7 @@ def generate_launch_description():
                 period=3.0,   # seconds; simple and safe
                 actions=[
                     Node(
-                        executable="frontier_explorer.py",  # your script name in autonomy_repo
+                        executable="frontier_explorer_vale.py",  # your script name in autonomy_repo
                         package="autonomy_repo",
                         name="frontier_explorer",
                         output="screen",

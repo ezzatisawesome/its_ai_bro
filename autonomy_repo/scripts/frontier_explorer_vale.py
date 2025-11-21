@@ -287,13 +287,11 @@ class FrontierExplorer(Node):
 
 
 def main(args=None):
-    rclpy.init(args=args)
+    rclpy.init(args=None)
+    print("main")
     node = FrontierExplorer()
-    try:
-        rclpy.spin(node)
-    finally:
-        node.destroy_node()
-        rclpy.shutdown()
+    rclpy.spin(node)
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':
